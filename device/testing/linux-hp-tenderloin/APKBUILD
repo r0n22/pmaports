@@ -21,6 +21,13 @@ makedepends="
 	perl
 "
 
+# Compiler: GCC 6 (doesn't boot when compiled with newer versions)
+if [ "${CC:0:5}" != "gcc6-" ]; then
+	CC="gcc6-$CC"
+	HOSTCC="gcc6-gcc"
+	CROSS_COMPILE="gcc6-$CROSS_COMPILE"
+fi
+
 # Source
 _repository="android_kernel_htc_msm8960"
 _commit="18e6439b6796639cc652b98118bd5eb9841c93ad"

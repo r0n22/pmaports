@@ -12,6 +12,7 @@ url="https://kernel.org"
 license="GPL-2.0-only"
 options="!strip !check !tracedeps pmb:cross-native"
 makedepends="
+	gcc6
 	bash
 	bc
 	bison
@@ -20,6 +21,12 @@ makedepends="
 	openssl-dev
 	perl
 "
+
+if [ "${CC:0:5}" != "gcc6-" ]; then
+	CC="gcc6-$CC"
+	HOSTCC="gcc6-gcc"
+	CROSS_COMPILE="gcc6-$CROSS_COMPILE"
+fi
 
 # Source
 _repository="android_kernel_htc_msm8960"

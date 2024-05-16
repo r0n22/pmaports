@@ -9,7 +9,7 @@ license="GPL LGPL"
 _gccrel=$_pkgver-r$pkgrel
 depends="binutils mpc1"
 makedepends_build="gcc g++ bison flex texinfo gawk zip gmp-dev mpfr-dev mpc1-dev zlib-dev"
-makedepends_host="linux-headers gmp-dev mpfr-dev mpc1-dev isl-dev zlib-dev"
+makedepends_host="linux-headers gmp-dev mpfr-dev mpc1-dev zlib-dev"
 subpackages=" "
 options=""
 

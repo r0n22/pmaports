@@ -12,7 +12,13 @@ url="https://kernel.org"
 license="GPL-2.0-only"
 options="!strip !check !tracedeps pmb:cross-native"
 makedepends="
-	gcc6
+ 	sed 
+	installkernel 
+	gmp-dev 
+	linux-headers 
+	elfutils-dev 
+	devicepkg-dev  
+	xz
 	bash
 	bc
 	bison
@@ -51,13 +57,12 @@ _outdir="out"
 
 prepare() {
 	default_prepare
-	. downstreamkernel_prepare
+	REPLACE_GCCH=0 . downstreamkernel_prepare
 }
 
 build() {
 	unset LDFLAGS
-	make O="$_outdir" ARCH="$_carch" CC="${CC:-gcc}" \
-		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-postmarketOS"
+	make KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-postmarketOS"
 }
 
 package() {
